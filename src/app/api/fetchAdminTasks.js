@@ -1,5 +1,7 @@
+const base_url = process.env.NEXT_PUBLIC_BASE_URL
+
 const fetchAdminTasks = async (date) => {
-    const url = `http://13.201.129.153:5050/app/tasks?date=${date}`;
+    const url = `${base_url}app/tasks?date=${date}`;
 
     try {
         const response = await fetch(url, {

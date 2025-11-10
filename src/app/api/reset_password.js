@@ -1,6 +1,9 @@
+const base_url = process.env.NEXT_PUBLIC_BASE_URL
+
+
 async function resetPassword(email, newPassword) {
     try {
-      const response = await fetch("http://13.201.129.153:5050/api/auth/resetpassword", {
+      const response = await fetch(`${base_url}api/auth/resetpassword`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

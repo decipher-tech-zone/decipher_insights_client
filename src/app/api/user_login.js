@@ -1,8 +1,10 @@
+const base_url = process.env.NEXT_PUBLIC_BASE_URL
+
 export const user_login = async (email, password) => {
   try {
     // Construct the request with the passed URL as a query parameter
 
-    const url = `http://13.201.129.153:5050/api/auth/login`;
+    const url = `${base_url}api/auth/login`;
     const response = await fetch(url,{
         method:"POST",
         headers:{

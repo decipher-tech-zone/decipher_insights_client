@@ -1,3 +1,6 @@
+const base_url = process.env.NEXT_PUBLIC_BASE_URL
+
+
 const task_not_filled_daily = async (date) => {
     try {
         if (!date) {
@@ -5,7 +8,7 @@ const task_not_filled_daily = async (date) => {
             return;
         }
 
-        const response = await fetch(`http://13.201.129.153:5050/app/tasks/not-filled?date=${date}`);
+        const response = await fetch(`${base_url}app/tasks/not-filled?date=${date}`);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
