@@ -89,7 +89,7 @@ export async function POST(req) {
     // ✅ Send the email
     await transporter.sendMail({
       from: `"Decipher Insights" <${process.env.EMAIL_USER}>`,
-      to: ["luv.ratan@decipherfinancials.com", "megha.punjabi@decipherfinancials.com","isha.joshi@decpipherfinancials.com"],
+      to: ["luv.ratan@decipherfinancials.com", "megha.punjabi@decipherfinancials.com","isha.joshi@decipherfinancials.com", "anil.kumar@decipherfinancials.com", "sneha.mehta@decipherfinancials.com"],
       subject: "Form Submission - Approval Required",
       html: emailHtml,
     });
