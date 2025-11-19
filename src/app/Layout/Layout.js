@@ -32,6 +32,7 @@ import PeopleIcon from "@mui/icons-material/People";
 import Recruitment from "../Features/HR_Portal/Recruitment/Recruitment";
 import Request_form from "../Features/Request_form/Request_form";
 import Request_approval from "../Features/Request_Approval/Request_approval";
+import Image from "next/image";
 
 const drawerWidth = 240;
 
@@ -129,7 +130,7 @@ export default function Layout({ handleLogout, loggingOut }) {
   };
 
   return (
-    <Box sx={{ display: "flex" }} >
+    <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <AppBar position="fixed" open={open}>
         <Toolbar>
@@ -169,7 +170,11 @@ export default function Layout({ handleLogout, loggingOut }) {
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
-        <DrawerHeader >
+        <DrawerHeader>
+          
+          <Image src="/logo.svg" alt="Logo" width={300} height={50} style={{ objectFit: "cover" }}
+/>
+
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "rtl" ? (
               <ChevronRightIcon />
@@ -181,43 +186,51 @@ export default function Layout({ handleLogout, loggingOut }) {
         <Divider />
         <List>
           {/* ['News', 'Task Sheet', 'Task Sheet Admin'] */}
-          {["Request Form","Request Approval", "Task Sheet Admin"].map((text, index) => (
-            <ListItem
-              key={text}
-              disablePadding
-              sx={{ display: "block" }}
-              onClick={() => setActiveMenuItem(index)}
-            >
-              <ListItemButton
-                sx={[
-                  {
-                    minHeight: 48,
-                    px: 2.5,
-                  },
-                  open
-                    ? { justifyContent: "initial" }
-                    : { justifyContent: "center" },
-                ]}
+          {["Request Form", "Request Approval", "Task Sheet Admin"].map(
+            (text, index) => (
+              <ListItem
+                key={text}
+                disablePadding
+                sx={{ display: "block" }}
+                onClick={() => setActiveMenuItem(index)}
               >
-                <ListItemIcon
+                <ListItemButton
                   sx={[
                     {
-                      minWidth: 0,
-                      justifyContent: "center",
+                      minHeight: 48,
+                      px: 2.5,
                     },
-                    open ? { mr: 3 } : { mr: "auto" },
+                    open
+                      ? { justifyContent: "initial" }
+                      : { justifyContent: "center" },
                   ]}
                 >
-                  {index === 0 ? <AssignmentIcon/>: index ==1?<AddTaskIcon />  : <WorkHistoryIcon />}
-                </ListItemIcon>
+                  <ListItemIcon
+                    sx={[
+                      {
+                        minWidth: 0,
+                        justifyContent: "center",
+                      },
+                      open ? { mr: 3 } : { mr: "auto" },
+                    ]}
+                  >
+                    {index === 0 ? (
+                      <AssignmentIcon />
+                    ) : index == 1 ? (
+                      <AddTaskIcon />
+                    ) : (
+                      <WorkHistoryIcon />
+                    )}
+                  </ListItemIcon>
 
-                <ListItemText
-                  primary={text}
-                  sx={[open ? { opacity: 1 } : { opacity: 0 }]}
-                />
-              </ListItemButton>
-            </ListItem>
-          ))}
+                  <ListItemText
+                    primary={text}
+                    sx={[open ? { opacity: 1 } : { opacity: 0 }]}
+                  />
+                </ListItemButton>
+              </ListItem>
+            )
+          )}
         </List>
         <Divider />
       </Drawer>
@@ -225,10 +238,10 @@ export default function Layout({ handleLogout, loggingOut }) {
         <DrawerHeader />
 
         {activeMenuItem == 0 ? (
-          <Request_form/>
+          <Request_form />
         ) : activeMenuItem == 1 ? (
-          <Request_approval/>
-        ) : activeMenuItem == 2 ? (          
+          <Request_approval />
+        ) : activeMenuItem == 2 ? (
           <TaskSheetAdmin />
         ) : (
           <Recruitment />
